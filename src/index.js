@@ -39,9 +39,23 @@ app.get('/task2B', (req, res) => {
 		fullname = error;
 	}
 
-
-
 	res.send(fullname);
+});
+
+app.get('/task2C', (req, res) => {
+	const error = 'Invalid username';
+	let username = req.query.username,
+		result;
+
+	result = username.split('/');
+
+	result = result[result.length - 1];
+
+	result = result.split('?');
+
+	result = '@' + result[0].replace('@', '');
+
+	res.send(result);
 });
 
 app.listen(3000, () => {
